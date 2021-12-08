@@ -1,13 +1,15 @@
 const TEST = false;
+const USE_TEST_INPUT_FILE = false;
 const TEST_INPUT = [199, 200, 208, 210, 200, 207, 240, 269, 260, 263];
 
 import fs from 'fs';
 
-// could be done via readline, but requires more code to be transformed into an array =)
-const inputStr = fs.readFileSync("1/input.txt", "utf-8");
+const NUM = import.meta.url.match(/[\/\\](\d+)(-\d+)?\.js$/)[1];
+
+const inputStr = fs.readFileSync(`${NUM}/input${TEST && USE_TEST_INPUT_FILE ? "-test" : ''}.txt`, "utf-8");
 const input = inputStr.split(inputStr.includes("\r\n") ? "\r\n" : "\n");
 
-const numbers = TEST ? TEST_INPUT : input.filter(l => l).map(l => +l);
+const numbers = TEST && !USE_TEST_INPUT_FILE ? TEST_INPUT : input.filter(l => l).map(l => +l);
 
 // 1-1
 var increases = numbers.reduce(
