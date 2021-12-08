@@ -1,5 +1,5 @@
-const TEST = false;
-const USE_TEST_INPUT_FILE = false;
+const TEST = true;
+const USE_TEST_INPUT_FILE = true;
 const TEST_INPUT = [];
 
 import fs from 'fs';
